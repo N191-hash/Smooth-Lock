@@ -1,61 +1,73 @@
-// Mật khẩu mẫu
-const PASSWORD_A = "key_free_bluat";
-const PASSWORD_B = "key_xyz_bluat9812_2025";
+document.getElementById("loginButton").addEventListener("click", function () {
+  const password = document.getElementById("password").value;
 
-function checkPassword() {
-  const input = document.getElementById("passwordLogin").value;
-  if (input === PASSWORD_A) {
-    window.location.href = "https://example.com/a";
-  } else if (input === PASSWORD_B) {
-    window.location.href = "https://example.com/b";
+  if (password === "key_free_baluat") {
+    window.location.href = "https://example.com/trang1";
+  } else if (password === "key_xyz_bluat9812_2025") {
+    window.location.href = "https://example.com/trang2";
   } else {
     alert("Sai mật khẩu!");
   }
-}
+});
 
 // Hiệu ứng tuyết rơi
-const canvas = document.getElementById("snow");
-if (canvas) {
+document.addEventListener("DOMContentLoaded", function () {
+  const canvas = document.createElement("canvas");
+  document.body.appendChild(canvas);
+  canvas.id = "snow";
+  canvas.style.position = "fixed";
+  canvas.style.top = "0";
+  canvas.style.left = "0";
+  canvas.style.pointerEvents = "none";
+  canvas.style.zIndex = "9999";
+
   const ctx = canvas.getContext("2d");
   let width = canvas.width = window.innerWidth;
   let height = canvas.height = window.innerHeight;
 
-  let flakes = [];
-  for (let i = 0; i < 100; i++) {
-    flakes.push({
+  let snowflakes = [];
+
+  function createSnowflake() {
+    snowflakes.push({
       x: Math.random() * width,
-      y: Math.random() * height,
-      r: Math.random() * 4 + 1,
-      d: Math.random() * 100
+      y: 0,
+      radius: Math.random() * 4 + 1,
+      speed: Math.random() * 1 + 0.5
     });
   }
 
-  function drawFlakes() {
+  function drawSnowflakes() {
     ctx.clearRect(0, 0, width, height);
     ctx.fillStyle = "white";
     ctx.beginPath();
-    for (let i = 0; i < flakes.length; i++) {
-      let f = flakes[i];
-      ctx.moveTo(f.x, f.y);
-      ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2, true);
+    for (let flake of snowflakes) {
+      ctx.moveTo(flake.x, flake.y);
+      ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
     }
     ctx.fill();
-    moveFlakes();
+    moveSnowflakes();
   }
 
-  let angle = 0;
-  function moveFlakes() {
-    angle += 0.01;
-    for (let i = 0; i < flakes.length; i++) {
-      let f = flakes[i];
-      f.y += Math.cos(angle + f.d) + 1 + f.r / 2;
-      f.x += Math.sin(angle) * 2;
-
-      if (f.y > height) {
-        flakes[i] = { x: Math.random() * width, y: 0, r: f.r, d: f.d };
+  function moveSnowflakes() {
+    for (let flake of snowflakes) {
+      flake.y += flake.speed;
+      if (flake.y > height) {
+        flake.y = 0;
+        flake.x = Math.random() * width;
       }
     }
   }
 
-  setInterval(drawFlakes, 25);
-}
+  function update() {
+    drawSnowflakes();
+    requestAnimationFrame(update);
+  }
+
+  setInterval(createSnowflake, 100);
+  update();
+
+  window.addEventListener("resize", () => {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  });
+});
