@@ -1,9 +1,9 @@
 function handleLogin() {
     const password = document.getElementById('password').value;
 
-    if (password === 'password1') {
+    if (password === 'key_free_baluat') {
         window.location.href = 'https://web-a.com'; // Thay đổi link trang web A
-    } else if (password === 'password2') {
+    } else if (password === 'key_xyz_bluat9812_2025') {
         window.location.href = 'https://web-b.com'; // Thay đổi link trang web B
     } else {
         alert('Mật khẩu không chính xác!');
