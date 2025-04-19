@@ -1,89 +1,94 @@
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: white;
+    color: white;
 }
 
-.top-section {
-  background-color: white;
-  padding: 40px;
-  text-align: center;
+.wrapper {
+    background-color: black;
+    text-align: center;
+    padding: 50px 0;
+    height: 100vh;
 }
 
-.main-section {
-  background-color: black;
-  color: white;
-  padding: 60px 20px;
-  text-align: center;
+.image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 20px;
 }
 
-.main-image {
-  width: 200px;
-  height: auto;
-  margin-bottom: 20px;
+.title {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
 
-.main-title {
-  font-size: 28px;
-  margin: 10px 0;
+.login-container {
+    margin-top: 20px;
 }
 
-.sub-text {
-  font-size: 18px;
-  margin-bottom: 30px;
+input[type="password"] {
+    padding: 10px;
+    width: 200px;
+    border: none;
+    margin-bottom: 20px;
+    font-size: 16px;
 }
 
-.login-form input[type="password"],
-.login-box input[type="password"] {
-  padding: 10px;
-  width: 250px;
-  margin: 10px 0;
-  font-size: 16px;
+#login-btn {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    font-size: 18px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: rainbow 1.5s linear infinite;
 }
 
-.rainbow-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-  animation: rainbow 3s infinite;
-  color: white;
-  border-radius: 5px;
+#login-btn:hover {
+    background-color: white;
+    color: black;
 }
 
 @keyframes rainbow {
-  0% { background-color: red; }
-  14% { background-color: orange; }
-  28% { background-color: yellow; }
-  42% { background-color: green; }
-  57% { background-color: blue; }
-  71% { background-color: indigo; }
-  85% { background-color: violet; }
-  100% { background-color: red; }
-}
-
-.login-page {
-  margin: 0;
-  background-color: black;
-  color: white;
-  overflow: hidden;
-  height: 100vh;
-  position: relative;
+    0% { color: red; }
+    14% { color: orange; }
+    28% { color: yellow; }
+    42% { color: green; }
+    57% { color: blue; }
+    71% { color: indigo; }
+    85% { color: violet; }
+    100% { color: red; }
 }
 
 #snow {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
 }
 
-.login-box {
-  position: relative;
-  z-index: 2;
-  top: 40%;
-  transform: translateY(-50%);
-  text-align: center;
+.snowflake {
+    position: absolute;
+    top: -10px;
+    background-color: white;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    animation: snow 5s linear infinite;
+}
+
+@keyframes snow {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(100vh);
+    }
 }
