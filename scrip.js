@@ -2,7 +2,7 @@ function handleLogin() {
     const password = document.getElementById('password').value;
 
     if (password === 'key_free_baluat') {
-        window.location.href = 'https://web-a.com'; // Thay đổi link trang web A
+        window.location.href = 'https://n191-hash.github.io/config-dow/'; // Thay đổi link trang web A
     } else if (password === 'key_xyz_bluat9812_2025') {
         window.location.href = 'https://web-b.com'; // Thay đổi link trang web B
     } else {
